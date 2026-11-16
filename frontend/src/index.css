@@ -1,0 +1,299 @@
+:root {
+  --bg: #fafaf7;
+  --surface: #ffffff;
+  --text: #1f2328;
+  --muted: #5f6670;
+  --border: #d8dbe0;
+  --accent: #2f5fd0;
+  --accent-text: #ffffff;
+  --danger: #b42318;
+  --danger-bg: #fdecea;
+  --focus: #2f5fd0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15171a;
+    --surface: #1d2025;
+    --text: #e7e9ec;
+    --muted: #9aa3ad;
+    --border: #353a42;
+    --accent: #7aa2f7;
+    --accent-text: #0d1117;
+    --danger: #ff8a80;
+    --danger-bg: #3a1d1b;
+    --focus: #7aa2f7;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.site-nav a:not(.button) {
+  color: var(--text);
+}
+
+.site-main {
+  flex: 1;
+  width: 100%;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+
+h1 {
+  font-size: 1.6rem;
+  line-height: 1.25;
+  margin: 0 0 1rem;
+}
+
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.page-header h1 {
+  margin-bottom: 0;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button-small {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.9rem;
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--accent);
+}
+
+.button-danger {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #ffffff;
+}
+
+.button-danger:not(:disabled) {
+  filter: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .button-danger {
+    color: #0d1117;
+  }
+}
+
+.home {
+  padding-top: 1.5rem;
+}
+
+.home p {
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+.home-actions,
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.field {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.field > span {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+input[type="text"],
+input[type="search"],
+textarea {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+input[type="search"] {
+  margin-bottom: 1rem;
+}
+
+textarea {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.95rem;
+  resize: vertical;
+}
+
+input[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+
+.error {
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.status,
+.meta {
+  color: var(--muted);
+}
+
+.note-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.note-card {
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.note-card-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.note-card-preview {
+  margin: 0.35rem 0;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.note-card time {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.note-body {
+  margin: 1.25rem 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  overflow-wrap: anywhere;
+}
+
+.markdown > :first-child {
+  margin-top: 0;
+}
+
+.markdown pre {
+  overflow-x: auto;
+  padding: 0.75rem;
+  border-radius: 6px;
+  background: var(--bg);
+}
+
+.confirm {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--danger);
+  border-radius: 8px;
+  background: var(--danger-bg);
+}
+
+.confirm p {
+  margin-top: 0;
+  font-weight: 600;
+}
+
+.not-found {
+  padding-top: 1.5rem;
+}
